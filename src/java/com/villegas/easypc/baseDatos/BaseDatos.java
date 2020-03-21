@@ -22,10 +22,14 @@ import com.villegas.easypc.modelo.Persona;
  */
 public class BaseDatos {
 
-    public DBCollection obtenerColeccion(String collection) {
+    //Por defecto se conecta al localHost y al puerto 27017
+    private MongoClient mongoClient = new MongoClient();
 
-        //Por defecto se conecta al localHost y al puerto 27017
-        MongoClient mongoClient = new MongoClient();
+    public MongoClient getMongoClient() {
+        return mongoClient;
+    }
+
+    public DBCollection obtenerColeccion(String collection) {
 
         DB db = mongoClient.getDB(Commons.DB);
 

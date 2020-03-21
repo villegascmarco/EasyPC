@@ -123,6 +123,7 @@ public class Administrador {
         doc.append("correo", persona.getCorreo());
         doc.append("contrasenia", persona.getContrasenia());
         doc.append("foto", persona.getFoto());
+        doc.append("token", persona.getToken());
 
         BasicDBObjectBuilder docBuilder = BasicDBObjectBuilder.start();
 

@@ -39,8 +39,35 @@ Object.keys(usuario).forEach(key => {
 });
 
 function cerrarSesion() {
-    localStorage.removeItem('usuario');
-    window.location = "index.html";
+
+
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: "api/administrador/cerrarSesion",
+        data: {
+            administrador: JSON.stringify(usuario)
+        }
+    }).done(function (data) {
+        if (data != null) {
+            if (data.error != null) {
+                alert('Problemas');
+                return;
+            }
+
+            localStorage.removeItem('usuario');
+            window.location = "index.html";
+
+
+
+            return;
+
+        }
+        alert("No generado");
+
+        return;
+    });
 }
 
 function modificarInformacion() {
@@ -54,6 +81,7 @@ function modificarInformacion() {
     persona.correo = document.getElementById("correo").value;
     persona.contrasenia = document.getElementById("contrasenia").value;
     persona.foto = document.getElementById("foto").value;
+    persona.token = document.getElementById("token").value;
 
     usuario.persona = persona;
 
@@ -79,8 +107,12 @@ function modificarInformacion() {
                 alert('Problemas');
                 return;
             }
-            localStorage.setItem("usuario", JSON.stringify(data));
-            window.location.reload(false);
+            var respuesta = JSON.stringify(data);
+            if (data.equals != "") {
+                localStorage.setItem("usuario", respuesta);
+                window.location.reload(false);
+                return;
+            }
             return;
 
         }
@@ -155,7 +187,8 @@ function modificarEstatus(estatus) {
         url: "api/administrador/modificarEstatus",
         data: {
             correo: correo,
-            estatus: estatus
+            estatus: estatus,
+            viejo: JSON.stringify(usuario)
         }
     }).done(function (data) {
         if (data != null) {
@@ -163,13 +196,7 @@ function modificarEstatus(estatus) {
                 alert('Problemas');
                 return;
             }
-            var respuesta = JSON.stringify(data);
-            if (respuesta.includes("idAdministrador")) {
-
-                alert("Éxito");
-            } else {
-                alert(respuesta);
-            }
+            alert(data.toString());
             return;
 
         }
@@ -180,18 +207,16 @@ function modificarEstatus(estatus) {
 }
 
 function listarAdministradores() {
-    var correo = usuario.persona.correo;
-
 
     $(".listado p").remove();
 
 
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         async: true,
         url: "api/administrador/listado",
         data: {
-            correo: correo
+            administrador: JSON.stringify(usuario)
         }
     }).done(function (data) {
         if (data != null) {

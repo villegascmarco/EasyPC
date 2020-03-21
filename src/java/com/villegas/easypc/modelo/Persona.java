@@ -8,6 +8,8 @@ package com.villegas.easypc.modelo;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
+import java.sql.Timestamp;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -22,11 +24,12 @@ public class Persona {
     private String correo;
     private String contrasenia;
     private String foto;
+    private String token;
 
     public Persona() {
     }
 
-    public Persona(String idPersona, String nombre, String apellido, int estatus, String correo, String contrasenia, String foto) {
+    public Persona(String idPersona, String nombre, String apellido, int estatus, String correo, String contrasenia, String foto, String token) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,6 +37,12 @@ public class Persona {
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.foto = foto;
+        this.token = token;
+    }
+
+    public Persona(int estatus, String correo) {
+        this.estatus = estatus;
+        this.correo = correo;
     }
 
     public String getIdPersona() {
@@ -92,10 +101,30 @@ public class Persona {
         this.foto = foto;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void clearToken() {
+        this.token = "";
+    }
+
+    public void setToken() {
+
+        Timestamp key;
+        String usuario;
+        String contra;
+
+        key = new Timestamp(System.currentTimeMillis());
+
+        this.token = (DigestUtils.sha256Hex(
+                correo + ";" + contrasenia + ";" + key));
+    }
+
     @Override
     public String toString() {
         Gson gson = new Gson();
-        Persona persona = new Persona(idPersona, nombre, apellido, estatus, correo, contrasenia, foto);
+        Persona persona = new Persona(idPersona, nombre, apellido, estatus, correo, contrasenia, foto, token);
 
         return gson.toJson(persona);
     }
@@ -110,6 +139,7 @@ public class Persona {
         docBuilder.append("correo", correo);
         docBuilder.append("contrasenia", contrasenia);
         docBuilder.append("foto", foto);
+        docBuilder.append("token", token);
 
         return docBuilder.get();
     }
