@@ -21,6 +21,7 @@ public class Commons {
      */
     public static final String COLECCION_ADMINISTRADOR = "administrador";
     public static final String COLECCION_PERSONA = "persona";
+    public static final String COLECCION_USUARIO = "usuario";
 
     /**
      * Ejemplo de un admin

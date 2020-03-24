@@ -10,13 +10,13 @@ import com.mongodb.DBObject;
  */
 public class Usuario {
     
-    private int idUsuario;
+    private String idUsuario;
     private Persona persona;
     
     public Usuario() {
     }
     
-    public Usuario (int idUsuario, Persona persona) {
+    public Usuario (String idUsuario, Persona persona) {
         this.idUsuario = idUsuario;
         this.persona = persona;
     }
@@ -27,11 +27,11 @@ public class Usuario {
         this.persona = aux.getPersona();
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -41,6 +41,12 @@ public class Usuario {
 
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+    
+    @Override
+    public String toString() {
+        Usuario aux = new Usuario(getIdUsuario(), getPersona());
+        return new Gson().toJson(aux);
     }
     
     public DBObject toBObject() {
