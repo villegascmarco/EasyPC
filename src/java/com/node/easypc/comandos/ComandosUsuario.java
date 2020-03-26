@@ -39,12 +39,12 @@ public class ComandosUsuario {
     }
 
     public String modificarDatos(Usuario usuario) {
-        String respuesta;
+        String respuesta = null;
         try {
             DBCollection colUsuario = baseDatos.obtenerColeccion(Commons.COLECCION_USUARIO);
 
             DBObject query = BasicDBObjectBuilder.start()
-                    .add("idUsuario", usuario.getIdUsuario())
+                    .add("persona.idPersona", usuario.getPersona().getIdPersona())
                     .get();
 
             colUsuario.update(query, usuario.toBObject());
@@ -61,7 +61,6 @@ public class ComandosUsuario {
     public boolean modificarEstatus(Usuario usuario) {
         boolean respuesta = true;
         String correo = usuario.getPersona().getCorreo();
-        int estatus = usuario.getPersona().getEstatus();
 
         try {
 
@@ -71,7 +70,7 @@ public class ComandosUsuario {
                     .add("persona.correo", correo)
                     .get();
 
-            BasicDBObject set = new BasicDBObject("$set", new BasicDBObject("persona.estatus", estatus));
+            BasicDBObject set = new BasicDBObject("$set", new BasicDBObject("persona.estatus", 0));
 
             colUsuario.update(query, set);
         } catch (Exception e) {

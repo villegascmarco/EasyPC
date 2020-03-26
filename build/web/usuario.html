@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Usuario - EasyPC</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="navbar-brand" href="usuario.html" title="Una solución inteligente">EasyPc</a>
+                </li>
+                <li>
+                    <button class="nav-link btn btn-light" type="button" data-toggle="modal" data-target="#eliminarModal">Eliminar usuario</button>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button class="nav-link btn btn-light" type="button" onclick="cerrarSesionUsuario()">Cerrar sesión</button>
+                    <!--<a class="nav-link btn btn-light" href="" onclick="cerrarSesionUsuario()" >Cerrar sesión</a>-->
+                </li>
+            </ul>
+        </nav>
+
+        <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">¿Deseas dar de baja tu cuenta?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal" onclick="eliminarUsuario()">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="jumbotron">
+                    <h1 class="display-4" id="tituloBienvenida">¡Bienvenido!</h1>
+                    <p class="lead">A continuación, puedes ver y modificar tu información.<br/></p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <form>
+                <input id="formIdUsuario" hidden>
+                <input id="formIdPersona" hidden>
+                <input id="formEstatus" hidden>
+                <input id="formToken" hidden>
+                <!--<input type="text" class="form-control" id="token" required hidden>-->
+
+                <p class="lead">Esta es tu información.<br/>
+                    Puedes modificarla y dar clic en "Guardar" para guardar cualquier cambio.</p>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="col-sm form-group">
+                            <img id="muestraFoto" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fgeekazos.com%2Fwp-content%2Fuploads%2F2015%2F02%2Ffb2.jpg%3Ffit%3D1280%252C720&f=1&nofb=1"  alt="Foto de perfil" class="img-thumbnail">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="col-sm form-group">
+                            <label for="modificarNombre">Nombre:</label>
+                            <input type="text" class="form-control" id="modificarNombre" required placeholder="Nombre" value="A">
+                        </div>
+                        <div class="col-sm form-group">
+                            <label for="modificarApellido">Apellido:</label>
+                            <input type="text" class="form-control" id="modificarApellido" required placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="col-sm form-group">
+                            <label for="modificarCorreo">Correo electronico:</label>
+                            <input type="email" class="form-control" id="modificarCorreo" required placeholder="Correo electronico">
+                        </div>
+                        <div class="col-sm form-group">
+                            <label for="modificarContrasenia">Contraseña:</label>
+                            <input type="password" class="form-control" id="modificarContrasenia" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="col-sm form-group">
+                            <label for="modificarFotoURL">Foto URL:</label>
+                            <input type="text" class="form-control" id="modificarFotoURL" placeholder="Foto URL">
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: right">
+                    <button type="button" class="btn btn-dark" onclick="modificarInformacionUsuario()" >Guardar</button> 
+                </p>
+            </form>
+        </div>
+        <script src="JS/jsUsuario.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

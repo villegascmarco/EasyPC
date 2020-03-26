@@ -18,13 +18,21 @@ public class ControladorUsuario {
 
     public String iniciarSesion(Usuario usuario) {
         String respuesta = controladorPersona.iniciarSesion(usuario.getPersona(), Commons.COLECCION_USUARIO);
+        System.out.println(respuesta);
 
-        Usuario aux = new Usuario(respuesta);
+        if (respuesta != null) {
+            Usuario aux = new Usuario(respuesta);
 
-        if (aux.getIdUsuario() != null) {
-            aux.getPersona().setToken();
+            if (aux.getIdUsuario() != null) {
+                aux.getPersona().setToken();
+                modificarUsuario(aux, true);
+            }
+            return aux.toString();
+
+        } else {
+            return null;
         }
-        return respuesta;
+
     }
 
     /**
@@ -46,6 +54,8 @@ public class ControladorUsuario {
             usuario.setIdUsuario(id);
             usuario.getPersona().setIdPersona(id);
             usuario.getPersona().setEstatus(1);
+
+            usuario.getPersona().clearToken();
 
             if (controladorPersona.crearPersona(usuario.getPersona())) {
                 if (comandosUsuario.crearUsuario(usuario)) {
@@ -69,17 +79,17 @@ public class ControladorUsuario {
      * Modifica los datos del usuario, más especificamente, su persona.
      *
      * @param usuario El usuario que se modificara
-     * @param tieneToken Indica sí el usuario tiene o no un token.
+     * @param actualizarToken
      * @return null sí el correo nuevo ya esta en uso, sí el token no es valido,
      * o sí la modificación fallo, o un JSON con los nuevos datos sí la
      * modificación fue existosa
      */
-    public String modificarUsuario(Usuario usuario, boolean tieneToken) {
+    public String modificarUsuario(Usuario usuario, boolean actualizarToken) {
         if (controladorPersona.validarActualizacion(usuario.getPersona())) {
-            return "Correo no disponible. Prueba con otro.";
+            return "Correo no disponible.";
         }
 
-        if (!tieneToken) {
+        if (!actualizarToken) {
             if (!controladorPersona.validarToken(usuario.getPersona())) {
                 return "No tiene permisos para modifcar datos";
             }
@@ -111,18 +121,24 @@ public class ControladorUsuario {
 
         if (controladorPersona.modificarEstatus(usuario.getPersona())) {
             if (comandosUsuario.modificarEstatus(usuario)) {
-                return "Éxito";
+                if (controladorPersona.cerrarSesion(usuario.getPersona())) {
+
+                    if (comandosUsuario.cerrarSesion(usuario)) {
+                        return "Éxito";
+                    }
+                }
+
             }
         }
         return "No se pudo dar de baja";
     }
 
     public String buscarUsuarios(Usuario usuario, Usuario usuarioBuscado) {
-        
-        if(!controladorPersona.validarToken(usuario.getPersona())){
+
+        if (!controladorPersona.validarToken(usuario.getPersona())) {
             return "Token inválido";
         }
-        
+
         return comandosUsuario.buscarUsuarios(usuarioBuscado);
     }
 

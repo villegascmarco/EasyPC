@@ -1,7 +1,9 @@
 package com.node.easypc.rest;
 
 import com.node.easypc.controlador.ControladorUsuario;
+import com.node.easypc.modelo.Persona;
 import com.node.easypc.modelo.Usuario;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -28,7 +30,12 @@ public class RestUsuario extends Application {
         cu = new ControladorUsuario();
 
         try {
-            json = cu.iniciarSesion(new Usuario(usuario));
+//            System.out.println("Usuario: " + usuario);
+            Usuario aux = new Usuario(usuario);
+//            System.out.println("ToString: " + aux.toString());
+//            System.out.println("Correo y contra: " + aux.getPersona().getCorreo() + " "
+//                    + aux.getPersona().getContrasenia());
+            json = cu.iniciarSesion(aux);
         } catch (Exception e) {
             e.printStackTrace();
             json = null;
@@ -95,4 +102,46 @@ public class RestUsuario extends Application {
         }
         return Response.status(Response.Status.OK).entity(json).build();
     }
+
+    @POST
+    @Path("eliminar")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response eliminar(@FormParam("usuario") String usuario) {
+        cu = new ControladorUsuario();
+        try {
+            Usuario uAux = new Usuario(usuario);
+            uAux.getPersona().setEstatus(0);
+            json = cu.modificarEstatus(uAux);
+        } catch (Exception e) {
+            e.printStackTrace();
+            json = null;
+        } finally {
+            System.out.println("JSON:" + json);
+            if (json == null) {
+                return Response.status(Response.Status.NO_CONTENT).entity(json).build();
+            }
+        }
+        return Response.status(Response.Status.OK).entity(json).build();
+    }
+
+    @POST
+    @Path("cerrarSesion")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response cerrarSesion(@FormParam("usuario") String usuario) {
+        cu = new ControladorUsuario();
+        try {
+            Usuario aux = new Usuario(usuario);
+            json = cu.cerrarSesion(aux);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            json = null;
+        } finally {
+            if (json == null) {
+                return Response.status(Response.Status.NO_CONTENT).entity(json).build();
+            }
+        }
+        return Response.status(Response.Status.OK).entity(json).build();
+    }
+
 }
