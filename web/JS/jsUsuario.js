@@ -1,18 +1,18 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-var user = JSON.parse(localStorage.getItem('user'));
+var usuario = JSON.parse(localStorage.getItem('usuario'));
 var persona;
 
-if (user == null) {
+if (usuario == null) {
     window.location = "ingresar_usuario.html";
+} else {
+    if (JSON.stringify(usuario).indexOf("idUsuario") < 0) {
+        window.location = "administrador.html";
+    }
 }
 
-persona = user.persona;
 
-Object.keys(user).forEach(key => {
+persona = usuario.persona;
+
+Object.keys(usuario).forEach(key => {
 
     if (key == "persona") {
         Object.keys(persona).forEach(key => {
@@ -46,7 +46,7 @@ Object.keys(user).forEach(key => {
             }
         });
     } else {
-        document.getElementById("formIdUsuario").value = user[key];
+        document.getElementById("formIdUsuario").value = usuario[key];
     }
 
 });
@@ -58,7 +58,7 @@ function cerrarSesionUsuario() {
         async: true,
         url: "api/usuario/cerrarSesion/",
         data: {
-            usuario: JSON.stringify(user)
+            usuario: JSON.stringify(usuario)
         }
     }).done(function (data) {
         if (data != null) {
@@ -69,7 +69,7 @@ function cerrarSesionUsuario() {
             }
             var respuesta = JSON.stringify(data);
             if (respuesta.includes("Éxito")) {
-                localStorage.removeItem("user");
+                localStorage.removeItem("usuario");
                 window.location = "ingresar_usuario.html";
                 return;
             } else {
@@ -97,11 +97,11 @@ function modificarInformacionUsuario() {
     persona.foto = document.getElementById("modificarFotoURL").value;
     persona.token = document.getElementById("formToken").value;
 
-    user.persona = persona;
+    usuario.persona = persona;
 
-    user.idUsuario = document.getElementById("formIdUsuario").value;
+    usuario.idUsuario = document.getElementById("formIdUsuario").value;
 
-    var json = JSON.stringify(user);
+    var json = JSON.stringify(usuario);
 
     $.ajax({
         type: "POST",
@@ -117,7 +117,7 @@ function modificarInformacionUsuario() {
                 console.log(data);
                 return;
             }
-            localStorage.setItem("user", JSON.stringify(data));
+            localStorage.setItem("usuario", JSON.stringify(data));
             alert("Modificación exitosa");
             window.location.reload(false);
             return;
@@ -134,7 +134,7 @@ function eliminarUsuario() {
         async: true,
         url: "api/usuario/eliminar/",
         data: {
-            usuario: JSON.stringify(user)
+            usuario: JSON.stringify(usuario)
         }
     }).done(function (data) {
         if (data != null) {
@@ -144,7 +144,7 @@ function eliminarUsuario() {
                 return;
             }
             alert("Usuario dado de baja con exito");
-            localStorage.removeItem("user");
+            localStorage.removeItem("usuario");
             window.location.reload(false);
             return;
         } else {

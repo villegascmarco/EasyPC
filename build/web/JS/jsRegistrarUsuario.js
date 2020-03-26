@@ -1,13 +1,21 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+var usuario = localStorage.getItem('usuario');
 
-var user = localStorage.getItem('user');
+if (usuario != null) {
+    if (JSON.stringify(usuario).indexOf("idAdministrador") >= 0) {
+        window.location = "administrador.html";
 
-if (user != null) {
-    window.location = "usuario.html";
+    } else if (JSON.stringify(usuario).indexOf("idUsuario") >= 0) {
+        window.location = "usuario.html";
+    } else {
+        alert("No es encontró coincidencias jsIngresar ln15");
+        localStorage.removeItem('usuario');
+    }
+}
+
+if (usuario != null) {
+    if (JSON.stringify(usuario).indexOf("idAdministrador") >= 0) {
+        window.location = "administrador.html";
+    }
 }
 
 function registrarUsuario() {
@@ -40,7 +48,7 @@ function registrarUsuario() {
             var respuesta = JSON.stringify(data);
             if (respuesta.includes("idUsuario")) {
 
-                localStorage.setItem("user", respuesta);
+                localStorage.setItem("usuario", respuesta);
                 alert("Nuevo usuario registrado!");
                 window.location = "usuario.html";
             } else {
