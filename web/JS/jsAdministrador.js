@@ -10,6 +10,10 @@ if (usuario == null) {
     window.location = "index.html";
 }
 
+if (JSON.stringify(usuario).indexOf("idAdministrador") < 0) {//Validamos si es un administrador
+    window.location = "usuario.html";
+}
+
 persona = usuario.persona;
 
 Object.keys(usuario).forEach(key => {
