@@ -10,6 +10,10 @@ if (usuario == null) {
     window.location = "index.html";
 }
 
+if (JSON.stringify(usuario).indexOf("idAdministrador") < 0) {//Validamos si es un administrador
+    window.location = "usuario.html";
+}
+
 persona = usuario.persona;
 
 Object.keys(usuario).forEach(key => {
@@ -25,13 +29,12 @@ Object.keys(usuario).forEach(key => {
             }
 
             document.getElementById(key).value = persona[key];
-            //alert(key + "---" + persona[key]);
+
 
         });
 
     } else {
 
-//        alert(key + "---" + usuario[key]);
         document.getElementById(key).value = usuario[key];
 
     }
@@ -227,34 +230,28 @@ function listarAdministradores() {
             var respuesta = JSON.stringify(data);
             var arreglo = JSON.parse(respuesta);
 
+            let table = document.getElementById("listado");
+
+            $("#listado tbody tr").remove();
+
             arreglo.forEach(element => {
-                var texto =
-                        element.telefono + " -- "
-                        + element.persona.nombre + " -- "
-                        + element.persona.apellido + " -- "
-                        + element.persona.correo + " -- "
-                        + element.telefono + " -- "
-                        + element.colonia + ", "
-                        + element.calles + ", "
-                        + element.numero + ", "
-                        + element.cp;
 
-                var newItem = document.createElement("p");       // Create a <p> node
+                let row = table.insertRow();
 
-                var textnode = document.createTextNode(texto);  // Create a text node
+                let telefono = row.insertCell();
+                let nombre = row.insertCell();
+                let apellido = row.insertCell();
+                let correo = row.insertCell();
+                let direccion = row.insertCell();
 
-                newItem.appendChild(textnode);                    // Append the text to <p>
-                //var newImg = document.createElement("img");       
-                //newItem.appendChild(newImg);
-                // newImg.src = element.persona.foto   
 
-                var list = document.getElementById("listado");    // Get the <div> element to insert a new node
-
-                list.insertBefore(newItem, list.childNodes[0]);  // Insert <p> before the first child of <ul> 
+                telefono.appendChild(document.createTextNode(element.telefono));
+                nombre.appendChild(document.createTextNode(element.persona.nombre));
+                apellido.appendChild(document.createTextNode(element.persona.apellido));
+                correo.appendChild(document.createTextNode(element.persona.correo));
+                direccion.appendChild(document.createTextNode(element.colonia));
 
             });
-
-//            alert(respuesta);
 
             return;
 

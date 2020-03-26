@@ -6,7 +6,15 @@
 var usuario = localStorage.getItem('usuario');
 
 if (usuario != null) {
-    window.location = "administrador.html";
+    if (JSON.stringify(usuario).indexOf("idAdministrador") >= 0) {
+        window.location = "administrador.html";
+
+    } else if (JSON.stringify(usuario).indexOf("idUsuario") >= 0) {
+        window.location = "usuario.html";
+    } else {
+        alert("No es encontró coincidencias jsIngresar ln15");
+        localStorage.removeItem('usuario');
+    }
 }
 
 function ingresar() {
