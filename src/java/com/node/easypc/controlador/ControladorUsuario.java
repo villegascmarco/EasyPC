@@ -3,7 +3,6 @@ package com.node.easypc.controlador;
 import com.google.gson.Gson;
 import com.node.easypc.comandos.ComandosUsuario;
 import com.node.easypc.commons.Commons;
-import com.node.easypc.modelo.Persona;
 import com.node.easypc.modelo.Usuario;
 import java.sql.Timestamp;
 
