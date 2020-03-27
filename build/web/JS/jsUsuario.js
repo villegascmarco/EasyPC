@@ -12,44 +12,46 @@ if (usuario == null) {
 
 persona = usuario.persona;
 
-Object.keys(usuario).forEach(key => {
+function establecerCampos() {
+    Object.keys(usuario).forEach(key => {
 
-    if (key == "persona") {
-        Object.keys(persona).forEach(key => {
-            switch (key) {
-                case "idPersona":
-                    document.getElementById("formIdPersona").value = persona[key];
-                    break;
-                case "foto":
-                    if (persona[key] != "") {
-                        document.getElementById("muestraFoto").src = persona[key];
-                        document.getElementById("modificarFotoURL").value = persona[key];
-                    }
-                    break;
-                case "nombre":
-                    document.getElementById("modificarNombre").value = persona[key];
-                    break;
-                case "apellido":
-                    document.getElementById("modificarApellido").value = persona[key];
-                    break;
-                case "correo":
-                    document.getElementById("modificarCorreo").value = persona[key];
-                    break;
-                case "contrasenia":
-                    document.getElementById("modificarContrasenia").value = persona[key];
-                    break;
-                case "estatus":
-                    document.getElementById("formEstatus").value = persona[key];
-                    break;
-                case "token":
-                    document.getElementById("formToken").value = persona[key];
-            }
-        });
-    } else {
-        document.getElementById("formIdUsuario").value = usuario[key];
-    }
+        if (key == "persona") {
+            Object.keys(persona).forEach(key => {
+                switch (key) {
+                    case "idPersona":
+                        document.getElementById("formIdPersona").value = persona[key];
+                        break;
+                    case "foto":
+                        if (persona[key] != "") {
+                            document.getElementById("muestraFoto").src = persona[key];
+                            document.getElementById("modificarFotoURL").value = persona[key];
+                        }
+                        break;
+                    case "nombre":
+                        document.getElementById("modificarNombre").value = persona[key];
+                        break;
+                    case "apellido":
+                        document.getElementById("modificarApellido").value = persona[key];
+                        break;
+                    case "correo":
+                        document.getElementById("modificarCorreo").value = persona[key];
+                        break;
+                    case "contrasenia":
+                        document.getElementById("modificarContrasenia").value = persona[key];
+                        break;
+                    case "estatus":
+                        document.getElementById("formEstatus").value = persona[key];
+                        break;
+                    case "token":
+                        document.getElementById("formToken").value = persona[key];
+                }
+            });
+        } else {
+            document.getElementById("formIdUsuario").value = usuario[key];
+        }
 
-});
+    });
+}
 
 function cerrarSesionUsuario() {
 
