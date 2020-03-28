@@ -22,9 +22,9 @@ function establecerCampos() {
                         document.getElementById("formIdPersona").value = persona[key];
                         break;
                     case "foto":
+                        document.getElementById("modificarFotoURL").value = persona[key];
                         if (persona[key] != "") {
                             document.getElementById("muestraFoto").src = persona[key];
-                            document.getElementById("modificarFotoURL").value = persona[key];
                         }
                         break;
                     case "nombre":
@@ -89,6 +89,15 @@ function cerrarSesionUsuario() {
 }
 
 function modificarInformacionUsuario() {
+
+    if (persona.nombre == document.getElementById("modificarNombre").value
+            && persona.apellido == document.getElementById("modificarApellido").value
+            && persona.correo == document.getElementById("modificarCorreo").value
+            && persona.contrasenia == document.getElementById("modificarContrasenia").value
+            && persona.foto == document.getElementById("modificarFotoURL").value) {
+        alert("Los campos no han sido modificados");
+        return;
+    }
 
     persona.idPersona = document.getElementById("formIdPersona").value;
     persona.nombre = document.getElementById("modificarNombre").value;

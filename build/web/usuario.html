@@ -58,7 +58,7 @@ and open the template in the editor.
             </div>
         </div>
         <div class="container">
-            <form>
+            <form id="formUsuario" onsubmit="modificarInformacionUsuario(); return false">
                 <input id="formIdUsuario" hidden>
                 <input id="formIdPersona" hidden>
                 <input id="formEstatus" hidden>
@@ -90,7 +90,7 @@ and open the template in the editor.
                         </div>
                         <div class="col-sm form-group">
                             <label for="modificarContrasenia">Contraseña:</label>
-                            <input type="password" class="form-control" id="modificarContrasenia" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="modificarContrasenia" required placeholder="Contraseña">
                         </div>
                     </div>
                     <div class="col-sm">
@@ -106,7 +106,7 @@ and open the template in the editor.
                     <div class="col-sm">
                         <p style="text-align: right">
                             <button type="button" class="btn btn-light" onclick="establecerCampos()">Cancelar</button>
-                            <button type="button" class="btn btn-dark" onclick="modificarInformacionUsuario()" >Guardar</button>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
                             <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#eliminarModal">Eliminar usuario</button>
                         </p>
                     </div>

@@ -54,7 +54,7 @@ public class ControladorUsuario {
             usuario.getPersona().setIdPersona(id);
             usuario.getPersona().setEstatus(1);
 
-            usuario.getPersona().clearToken();
+            usuario.getPersona().setToken();
 
             if (controladorPersona.crearPersona(usuario.getPersona())) {
                 if (comandosUsuario.crearUsuario(usuario)) {
