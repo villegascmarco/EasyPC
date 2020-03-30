@@ -40,7 +40,7 @@ public class ComandosPersona {
                 .add("persona.correo", persona.getCorreo())
                 .add("persona.contrasenia", persona.getContrasenia())
                 .add("persona.estatus", 1)
-                .add("persona.token", "")
+                //.add("persona.token", "")
                 .get();
 
         DBCursor dBCursor = dBCollection.find(query);
