@@ -70,3 +70,22 @@ input:focus {
     background-image: linear-gradient(to right, #37ecba 0%, #72afd3 100%);
     color:white;
 }
+
+.loginU{
+    background-image: url("https://sinapsismx.com/wp-content/uploads/2019/12/Smart-Parking.jpg");
+    background-position-y: -16rem; 
+}
+
+#loginUs{
+    background-color: white;
+    border-radius: 12px;
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#btnIngresar{
+    margin-left: 80%;
+}

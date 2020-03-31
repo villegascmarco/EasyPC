@@ -16,7 +16,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="CSS/estiloHorarios.css">
 
     </head>
-    <body>
+    <body class="loginU">
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark navC">
             <a class="navbar-brand" href="ingresar_usuario.html" title="Una solución inteligente"><h2>EasyPc</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,21 +37,23 @@ and open the template in the editor.
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <h1 class="display-4">¡Inicia sesión!</h1>
-                    <p class="lead">Para hacer uso de un sistema increible :)</p>
-                    <form id="formIngresar" onsubmit="ingresar();return false">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Correo electrónico</label>
-                            <input type="email" class="form-control" id="correoElectronico" aria-describedby="emailHelp" placeholder="correo@correo.com" required>
+                    <div id="loginUs">
+                        <h1 class="display-4">¡Inicia sesión!</h1>
+                        <p class="lead">Para hacer uso de un sistema increible :)</p>
+                        <form id="formIngresar" onsubmit="ingresar();return false">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correoElectronico" aria-describedby="emailHelp" placeholder="correo@correo.com" required>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Contraseña</label>
-                            <input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" required>
-                        </div>
-                        <button type="submit" class="btn btn-outline-info">Ingresar</button>
-                    </form>
-                    <p style="text-align: center">¿No tienes un usuario? <a href="registrar_usuario.html">Registrate</a>.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" required>
+                            </div>
+                            <button id="btnIngresar" type="submit" class="btn btn-outline-info">Ingresar</button>
+                        </form>
+                        <p style="text-align: center">¿No tienes un usuario? <a href="registrar_usuario.html">Registrate</a>.</p>
+                    </div>
                 </div>
                 <div class="col"></div>
             </div>
