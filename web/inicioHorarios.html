@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Horarios</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body onload="listarHorarios()">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+            <a class="navbar-brand" href="administrador.html">EasyPc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administradores
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="btn btn-light" data-toggle="collapse" href="#agregar" role="button" aria-expanded="false" aria-controls="agregar">Agregar administradores</a>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#eliminar" aria-expanded="false" aria-controls="eliminar">Eliminar administradores</button>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#listar" aria-expanded="false" aria-controls="listar" onclick="listarAdministradores()">Listar administradores</button>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#reingresar" aria-expanded="false" aria-controls="reingresar">Reingresar administradores</button>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#estacionamientos" aria-expanded="false" aria-controls="listar">Estacionamientos</button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inicioHorarios.html">Horarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="agregar eliminar listar reingresar">Toggle</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="cerrarSesion()" >Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1>Horarios:</h1>
+        <div id="listado">
+
+            <div class="container">
+                    <h1>Horarios</h1>
+
+                <div class="row">
+                    <div class="col-6" id="listadoHorarios">
+                        <table class="table table-hover" id="tblHorarios">
+                        </table>
+                    </div>
+
+                    <div class="col-6" id="detalleHorario">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 datosHorario">
+                                    <h5>Detalle horario:</h5>
+                                    <br>
+                                    <p><input type="hidden" id="txtidHorario"></p>
+                                    <p><input type="text" id="txtDia"></p>
+                                    <p><input type="text" id="txtHoraInicio"></p>
+                                    <p><input type="text" id="txtHoraFin"></p>
+                                </div>
+                                <div class="col-6" id="detalleBtn">
+                                    <p>
+                                        <button class="btn btn-outline-info" onclick="actualizarDatos()">Guardar</button>
+                                        <button class="btn btn-outline-danger" onclick="limpiarCampos()">Cancelar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="agregar">
+            <div class="container">
+                <div class="row">    
+                    <div class="col-sm-6" id="datosH">                    
+                        <h5>Agregar un nuevo horario:</h5>
+                        <p><h5>Día de servicio:</h5> <input type="text" id="txtDiaA">
+                        <p><h5>Hora de inicio:</h5> <input type="time" id="txtHoraInicioA">
+                        <p><h5>Hora de cierre:</h5> <input type="time" id="txtHoraFinA">
+
+                        <p id="btnsAgregar">
+                            <button class="btn btn-outline-info" onclick="agregarHorario()">Guardar</button>
+                            <button class="btn btn-outline-danger" onclick="limpiarRegistro()">Cancelar</button>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h5>Buscar horario:</h5>
+                        <p><input id="diaH" type="text" placeholder="Ingrese el día de servicio:">
+                            <button class="btn btn-outline-info" onclick="buscarHorario()">Buscar</button>
+                        </p>
+
+                        <table class="table table-hover" id="tblBusqueda">                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="JS/jsHorario.js"></script>
+    </body>       
+</html>

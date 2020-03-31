@@ -29,6 +29,11 @@ public class Persona {
     public Persona() {
     }
 
+    public Persona(String idPersona, String token){
+        this.idPersona = idPersona;
+        this.token = token;
+    }
+    
     public Persona(String idPersona, String nombre, String apellido, int estatus, String correo, String contrasenia, String foto, String token) {
         this.idPersona = idPersona;
         this.nombre = nombre;

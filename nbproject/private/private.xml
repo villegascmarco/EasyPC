@@ -9,7 +9,16 @@
             <file>file:/C:/Users/logic/Documents/UTL/5to%20cuatrimestre/Materias/Integradora/Proyecto/EasyPC/web/usuario.html</file>
         </group>
         <group>
-            <file>file:/home/marco/NetBeansProjects/EasyPC/src/java/com/node/easypc/comandos/ComandosPersona.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/commons/Commons.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/JS/jsAdministrador.js</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/controlador/ControladorPersona.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/comandos/ComandosHorario.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/rest/RestHorario.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/JS/jsHorario.js</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/administrador.html</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/baseDatos/BaseDatos.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/inicioHorarios.html</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/controlador/ControladorHorario.java</file>
         </group>
     </open-files>
 </project-private>
