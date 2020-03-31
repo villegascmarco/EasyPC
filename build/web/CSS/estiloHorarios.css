@@ -1,0 +1,72 @@
+
+#tblHorarios{
+    width:100%;
+    height:70%;
+}
+
+#tblHorarios, th{
+    width:auto;
+}
+
+.container{
+    width:100%;
+}
+
+.row{
+    width: 100%;
+}
+
+input[type=text]{
+    border-radius: 8px;
+    border:none;
+    background-color: #ededed;
+}
+
+#detalleBtn{
+    margin-top: 25%;
+}
+
+.datosHorario, input[type=text]{
+    width:100%;
+}
+
+#agregar{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#btnsAgregar{
+    margin-left: 60%;
+}
+
+#datosH{
+    margin-left: 1.5%;
+    width: 100%;
+}
+
+#datosH, input{
+    width:40%;
+}
+
+#diaH{
+    width:75%;
+}
+
+.infoTabla{
+    background-image: linear-gradient(to right, #37ecba 0%, #72afd3 100%);
+    color:white;
+}
+
+input:focus { 
+    outline: none !important;
+    border-color: #21c6db;
+    box-shadow: 0 0 3px #21c6db;
+    background-color: white;
+}
+
+.navC{
+    background-image: linear-gradient(to right, #37ecba 0%, #72afd3 100%);
+    color:white;
+}

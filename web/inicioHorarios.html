@@ -6,17 +6,18 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="CSS/estiloHorarios.css">
     </head>
     <body onload="listarHorarios()">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-            <a class="navbar-brand" href="administrador.html">EasyPc</a>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark navC">
+            <a class="navbar-brand" href="administrador.html"><h2>EasyPc</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item active dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administradores
                         </a>
@@ -32,30 +33,31 @@
 
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#estacionamientos" aria-expanded="false" aria-controls="listar">Estacionamientos</button>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Estacionamientos</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="inicioHorarios.html">Horarios</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <button class="btn btn-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="agregar eliminar listar reingresar">Toggle</button>
                     </li>
                 </ul>
             </div>
             <div class="navbar-collapse collapse order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" onclick="cerrarSesion()" >Cerrar sesión</a>
                     </li>
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Horarios:</h1>
         <div id="listado">
 
             <div class="container">
-                    <h1>Horarios</h1>
+                <h1>Horarios</h1>
 
                 <div class="row">
                     <div class="col-6" id="listadoHorarios">
