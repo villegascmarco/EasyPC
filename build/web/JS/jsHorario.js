@@ -52,10 +52,10 @@ function listarHorarios() {
                 datos += "<td>" + horarios[i].diaServicio + "</td>";
                 datos += "<td>" + horarios[i].horaInicio + "</td>";
                 datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-outline-info'\n\
+                datos += "<td><button type='button' class='btn btn-dark'\n\
      id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-outline-danger'\n\
+                datos += "<td><button type='button' class='btn btn-danger'\n\
      id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
                 datos += "</tr>";
@@ -120,10 +120,10 @@ function actualizarDatos() {
                 datos += "<td>" + horarios[i].diaServicio + "</td>";
                 datos += "<td>" + horarios[i].horaInicio + "</td>";
                 datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-outline-info'\n\
+                datos += "<td><button type='button' class='btn btn-dark'\n\
      id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-outline-danger'\n\
+                datos += "<td><button type='button' class='btn btn-danger'\n\
      id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
                 datos += "</tr>";
@@ -177,10 +177,10 @@ function eliminarHorario(idHorario, diaServicio, horaI, horaF) {
                 datos += "<td>" + horarios[i].diaServicio + "</td>";
                 datos += "<td>" + horarios[i].horaInicio + "</td>";
                 datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-outline-info'\n\
+                datos += "<td><button type='button' class='btn btn-dark'\n\
      id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-outline-danger'\n\
+                datos += "<td><button type='button' class='btn btn-danger'\n\
      id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
                 datos += "</tr>";
@@ -241,10 +241,10 @@ function agregarHorario() {
                 datos += "<td>" + horarios[i].diaServicio + "</td>";
                 datos += "<td>" + horarios[i].horaInicio + "</td>";
                 datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-outline-info'\n\
+                datos += "<td><button type='button' class='btn btn-dark'\n\
      id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-outline-danger'\n\
+                datos += "<td><button type='button' class='btn btn-danger'\n\
      id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
                 datos += "</tr>";
@@ -297,10 +297,10 @@ function buscarHorario() {
                 datos += "<td>" + horariosB[i].diaServicio + "</td>";
                 datos += "<td>" + horariosB[i].horaInicio + "</td>";
                 datos += "<td>" + horariosB[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-outline-info'\n\
+                datos += "<td><button type='button' class='btn btn-dark'\n\
      id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-outline-danger'\n\
+                datos += "<td><button type='button' class='btn btn-danger'\n\
      id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
                         horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
                 datos += "</tr>";

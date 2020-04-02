@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-input[type=text]{
+input[type=text],input[type=email],input[type=password], input[type=time]{
     border-radius: 8px;
     border:none;
     background-color: #ededed;
@@ -46,8 +46,12 @@ input[type=text]{
     width: 100%;
 }
 
-#datosH, input{
-    width:40%;
+#datosH, input[type=text]{
+    width:auto;
+}
+
+#datosH, input[type=time]{
+    width:38%;
 }
 
 #diaH{

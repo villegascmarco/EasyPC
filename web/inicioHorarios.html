@@ -7,6 +7,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="CSS/estiloHorarios.css">
+        <link rel="stylesheet" href="CSS/administrador.css">
+
     </head>
     <body onload="listarHorarios()">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark navC">
@@ -17,21 +19,10 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                 <ul class="navbar-nav">
-                    <li class="nav-item active dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="administrador.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administradores
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            <a class="btn btn-light" data-toggle="collapse" href="#agregar" role="button" aria-expanded="false" aria-controls="agregar">Agregar administradores</a>
-
-                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#eliminar" aria-expanded="false" aria-controls="eliminar">Eliminar administradores</button>
-
-                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#listar" aria-expanded="false" aria-controls="listar" onclick="listarAdministradores()">Listar administradores</button>
-
-                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#reingresar" aria-expanded="false" aria-controls="reingresar">Reingresar administradores</button>
-
-                        </div>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Estacionamientos</a>
@@ -39,14 +30,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="inicioHorarios.html">Horarios</a>
                     </li>
-                    <li class="nav-item active">
-                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="agregar eliminar listar reingresar">Toggle</button>
-                    </li>
                 </ul>
             </div>
             <div class="navbar-collapse collapse order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" onclick="cerrarSesion()" >Cerrar sesión</a>
                     </li>
                 </ul>
@@ -78,8 +66,8 @@
                                 </div>
                                 <div class="col-6" id="detalleBtn">
                                     <p>
-                                        <button class="btn btn-outline-info" onclick="actualizarDatos()">Guardar</button>
-                                        <button class="btn btn-outline-danger" onclick="limpiarCampos()">Cancelar</button>
+                                        <button class="btn btn-dark" onclick="actualizarDatos()">Guardar</button>
+                                        <button class="btn btn-light" onclick="limpiarCampos()">Cancelar</button>
                                     </p>
                                 </div>
                             </div>
@@ -100,14 +88,14 @@
                         <p><h5>Hora de cierre:</h5> <input type="time" id="txtHoraFinA">
 
                         <p id="btnsAgregar">
-                            <button class="btn btn-outline-info" onclick="agregarHorario()">Guardar</button>
-                            <button class="btn btn-outline-danger" onclick="limpiarRegistro()">Cancelar</button>
+                            <button class="btn btn-dark" onclick="agregarHorario()">Guardar</button>
+                            <button class="btn btn-light" onclick="limpiarRegistro()">Cancelar</button>
                         </p>
                     </div>
                     <div class="col-4">
                         <h5>Buscar horario:</h5>
                         <p><input id="diaH" type="text" placeholder="Ingrese el día de servicio:">
-                            <button class="btn btn-outline-info" onclick="buscarHorario()">Buscar</button>
+                            <button class="btn btn-info" onclick="buscarHorario()">Buscar</button>
                         </p>
 
                         <table class="table table-hover" id="tblBusqueda">                            

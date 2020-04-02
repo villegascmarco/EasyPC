@@ -13,6 +13,7 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="CSS/estiloHorarios.css">
+        <link rel="stylesheet" href="CSS/administrador.css">
 
     </head>
     <body onload="establecerCampos()">
@@ -23,13 +24,17 @@ and open the template in the editor.
                 </li>
 
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <button class="btn btn-outline-info nav-link" type="button" onclick="cerrarSesionUsuario()">Cerrar sesión</button>
-                    <!--<a class="nav-link btn btn-light" href="" onclick="cerrarSesionUsuario()" >Cerrar sesión</a>-->
-                </li>
-            </ul>
+            <div class="navbar-collapse collapse order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="cerrarSesionUsuario()" >Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+        <br>
+        <br>
+        <br>
 
         <div class="modal fade" id="eliminarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -66,7 +71,7 @@ and open the template in the editor.
                 <input id="formEstatus" hidden>
                 <input id="formToken" hidden>
                 <!--<input type="text" class="form-control" id="token" required hidden>-->
-
+                <br>
                 <p class="lead">Esta es tu información.<br/>
                     Puedes modificarla y dar clic en "Guardar" para guardar cualquier cambio.</p>
                 <div class="row">
@@ -107,9 +112,9 @@ and open the template in the editor.
                     <div class="col-sm"></div>
                     <div class="col-sm">
                         <p style="text-align: right">             
-                            <button type="submit" class="btn btn-outline-info">Guardar</button>
-                            <button type="button" class="btn btn-outline-danger" onclick="establecerCampos()">Cancelar</button>
-                            <button type="button" class="btn btn-outline-warning"  data-toggle="modal" data-target="#eliminarModal">Eliminar usuario</button>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                            <button type="button" class="btn btn-light" onclick="establecerCampos()">Cancelar</button>
+                            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#eliminarModal">Eliminar usuario</button>
                         </p>
                     </div>
                 </div>
