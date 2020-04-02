@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Estacionamiento</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+            <a class="navbar-brand" href="administrador.html">EasyPc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administradores
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                            <a class="btn btn-light" data-toggle="collapse" href="#agregar" role="button" aria-expanded="false" aria-controls="agregar">Agregar administradores</a>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#eliminar" aria-expanded="false" aria-controls="eliminar">Eliminar administradores</button>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#listar" aria-expanded="false" aria-controls="listar" onclick="listarAdministradores()">Listar administradores</button>
+
+                            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#reingresar" aria-expanded="false" aria-controls="reingresar">Reingresar administradores</button>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#estacionamientos" aria-expanded="false" aria-controls="listar">Estacionamientos</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="agregar eliminar listar reingresar">Toggle</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="cerrarSesion()" >Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Reservacion Container-->
+        <div class="container-fluid mr-4 mt-5 pt-3">
+
+            <!-- Material switch -->
+            <div class="switch m-2 float-left">
+                <label>
+                    Inactivos
+                    <input type="checkbox" id="isActive">
+                    <span class="lever"></span>
+                </label>
+            </div>
+
+            <!-- Boton para hacer toggle al Modal Reservacion -->
+            <!--<a id="btnAgregar" class="m-2 float-right" data-toggle="modal" data-target="#fullHeightModalRight"><i class="fas fa-plus-circle fa-2x green-text"></i></a>-->
+            <a id="btnAgregar" class="m-2 float-right" data-toggle="modal" data-target="#fullHeightModalRight">Agregar</a><script type="text/javascript">usuario = new Object();usuario.idPersona = "2020-03-27 22:27:35.446";usuario.token = 1;</script>
+
+            <!--Table-->
+            <table id="tablePreview" class="table table-bordered table-striped table-hover table-sm">
+                <!--Table head-->
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Ubicación</th>
+                        <th>Capacidad</th>
+                        <th>Administrador</th>
+                        <th>Longitud</th>
+                        <th>Latitud</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <!--Table head-->
+                <!--Table body-->
+                <tbody id="listadoBody">
+                </tbody>
+                <!--Table body-->
+            </table>
+            <!--Table-->
+        </div>
+
+        <!-- Full Height Modal Right -->
+        <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" data-backdrop="false">
+
+            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="myModalLabel">Agregar</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <form id="formulario" onsubmit="manejarInsertarModificar()">
+                                <input id="manejador" value="" type="hidden">
+
+                                <div class="md-form">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control">
+                                </div>
+
+                                <div class="md-form">
+                                    <label for="latitud">latitud</label>
+                                    <input type="number" id="latitud" name="latitud" class="form-control">
+                                </div>
+
+                                <div class="md-form">
+                                    <label for="longitud">longitud</label>
+                                    <input type="number" id="longitud" name="longitud" class="form-control">
+                                </div>
+
+                                <div class="md-form mb-3">
+                                    <label for="domicilio">Domicilio</label>
+                                    <input type="text" id="domicilio" name="domicilio" class="form-control">
+                                </div>
+
+                                <img src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg" alt="thumbnail" class="img-thumbnail"
+                                     style="width: 200px" id="imgElement">
+
+                                <div class="custom-file mt-2">
+                                    <input id="foto" onchange="encodeImageFileAsURL(this)" type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                    <label class="custom-file-label" for="customFileLang">Seleccionar imagen</label>
+                                </div>
+
+                                <div class="md-form mt-2">
+                                    <label for="capacidad">Capacidad</label>
+                                    <input type="number" id="capacidad" name="capacidad" class="form-control">
+                                </div>
+
+                                <div class="md-form">
+                                    <label for="costo">Costo</label>
+                                    <input type="number" id="costo" name="costo" class="form-control">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="mdb-main-label">Administrador</label>
+                                        <br>
+                                        <select id="admin" name="admin" class="mdb-select colorful-select dropdown-primary md-form" searchable="Search here..">
+                                            <option value="none" disabled selected>-- Escoger --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" form="formulario" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Full Height Modal Right -->
+        <!-- End Project -->
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script src="JS/jsEstacionamiento.js"></script>
+
+    </body>
+
+</html>
