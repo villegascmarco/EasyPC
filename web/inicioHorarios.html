@@ -35,7 +35,7 @@
             <div class="navbar-collapse collapse order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="cerrarSesion()" >Cerrar sesión</a>
+                        <a class="nav-link active" onclick="cerrarSesion()" >Cerrar sesión</a>
                     </li>
                 </ul>
             </div>
@@ -58,11 +58,14 @@
                             <div class="row">
                                 <div class="col-6 datosHorario">
                                     <h5>Detalle horario:</h5>
-                                    <br>
+                                    <br>                                    
                                     <p><input type="hidden" id="txtidHorario"></p>
-                                    <p><input type="text" id="txtDia"></p>
-                                    <p><input type="text" id="txtHoraInicio"></p>
-                                    <p><input type="text" id="txtHoraFin"></p>
+                                    <p>Día de servicio:
+                                        <input type="text" id="txtDia"></p>
+                                    <p>Hora de inicio:
+                                        <input type="text" id="txtHoraInicio"></p>
+                                    <p>Hora de cierre: 
+                                        <input type="text" id="txtHoraFin"></p>
                                 </div>
                                 <div class="col-6" id="detalleBtn">
                                     <p>
@@ -83,7 +86,7 @@
                 <div class="row">    
                     <div class="col-sm-6" id="datosH">                    
                         <h5>Agregar un nuevo horario:</h5>
-                        <p><h5>Día de servicio:</h5> <input type="text" id="txtDiaA">
+                        <p><h5>Día de servicio:</h5> <input type="text" placeholder="Ejemplo: Lunes" id="txtDiaA">
                         <p><h5>Hora de inicio:</h5> <input type="time" id="txtHoraInicioA">
                         <p><h5>Hora de cierre:</h5> <input type="time" id="txtHoraFinA">
 
