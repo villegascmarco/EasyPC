@@ -1,5 +1,7 @@
 var usuario = JSON.parse(localStorage.getItem("usuario"));
 var persona;
+var estacionamiento = JSON.parse(localStorage.getItem("estacionamiento"));
+
 
 if (usuario == null) {
     window.location = "index.html";
@@ -11,6 +13,7 @@ if (JSON.stringify(usuario).indexOf("idAdministrador") < 0) {//Validamos si es u
 
 persona = usuario.persona;
 
+var idEstacionamiento = estacionamiento.idEstacionamiento;
 var token = persona.token;
 var idPersona = persona.idPersona;
 
@@ -20,6 +23,7 @@ function listarHorarios() {
         async: true,
         url: 'api/horarios/listado',
         data: {
+            idEstacionamiento: idEstacionamiento,
             idPersona: idPersona,
             token: token
         }
@@ -205,6 +209,7 @@ function agregarHorario() {
         async: true,
         url: 'api/horarios/insertarHorario',
         data: {
+            idEstacionamiento: idEstacionamiento,
             diaServicio: document.getElementById('txtDiaA').value,
             horaInicio: document.getElementById('txtHoraInicioA').value,
             horaFin: document.getElementById('txtHoraFinA').value,

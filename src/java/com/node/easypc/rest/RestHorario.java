@@ -22,100 +22,104 @@ import javax.ws.rs.FormParam;
 
 @Path("horarios")
 public class RestHorario extends Application {
-
+    
     @POST
     @Path("listado")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listar(@FormParam("idPersona") @DefaultValue("") String idPersona,
+    public Response listar(@FormParam("idEstacionamiento") @DefaultValue("") String idEstacionamiento,
+            @FormParam("idPersona") @DefaultValue("") String idPersona,
             @FormParam("token") @DefaultValue("") String token) {
         ControladorHorario cH = new ControladorHorario();
         Persona persona = new Persona(idPersona, token);
-
-        String res = cH.listarHorarios(persona);
+        
+        String res = cH.listarHorarios(persona, idEstacionamiento);
         String out = new Gson().toJson(res);
         System.out.println(res);
         return Response.status(Response.Status.OK).entity(res).build();
     }
-
+    
     @POST
     @Path("actualizarHorario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response actualizar(@FormParam("idHorario") @DefaultValue("") String idHorario,
+    public Response actualizar(@FormParam("idEstacionamiento") @DefaultValue("") String idEstacionamiento,
+            @FormParam("idHorario") @DefaultValue("") String idHorario,
             @FormParam("diaServicio") @DefaultValue("") String diaServicio,
             @FormParam("horaInicio") @DefaultValue("") String horaInicio,
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-
+        
         ControladorHorario cH = new ControladorHorario();
         Horario h = new Horario();
         Persona p = new Persona(idPersona, token);
-
+        
         h.setIdHorario(idHorario);
         h.setDiaServicio(diaServicio);
         h.setHoraInicio(horaInicio);
         h.setHoraFin(horaFin);
         String res = "";
-
+        
         cH.actualizarHorario(h, p);
-        res = cH.listarHorarios(p);
+        res = cH.listarHorarios(p, idEstacionamiento);
         return Response.status(Response.Status.OK).entity(res).build();
     }
-
+    
     @POST
     @Path("eliminarHorario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response eliminar(@FormParam("idHorario") @DefaultValue("") String idHorario,
+    public Response eliminar(@FormParam("idEstacionamiento") @DefaultValue("") String idEstacionamiento,
+            @FormParam("idHorario") @DefaultValue("") String idHorario,
             @FormParam("diaServicio") @DefaultValue("") String diaServicio,
             @FormParam("horaInicio") @DefaultValue("") String horaInicio,
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-
+        
         ControladorHorario cH = new ControladorHorario();
-
+        
         Horario h = new Horario();
         Persona persona = new Persona(idPersona, token);
-
+        
         h.setIdHorario(idHorario);
         h.setDiaServicio(diaServicio);
         h.setHoraInicio(horaInicio);
         h.setHoraFin(horaFin);
         String res = "";
-
+        
         cH.eliminarHorario(h, persona);
-        res = cH.listarHorarios(persona);
-
+        res = cH.listarHorarios(persona, idEstacionamiento);
+        
         return Response.status(Response.Status.OK).entity(res).build();
     }
-
+    
     @POST
     @Path("insertarHorario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insertar(@FormParam("diaServicio") @DefaultValue("") String diaServicio,
+    public Response insertar(@FormParam("idEstacionamiento") @DefaultValue("") String idEstacionamiento,
+            @FormParam("diaServicio") @DefaultValue("") String diaServicio,
             @FormParam("horaInicio") @DefaultValue("") String horaInicio,
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-
+        
         ControladorHorario cH = new ControladorHorario();
-
+        
         Horario h = new Horario();
         Persona persona = new Persona(idPersona, token);
-
+        
         String idH = new Timestamp(System.currentTimeMillis()).getTime() + "";
         h.setIdHorario(idH);
         h.setDiaServicio(diaServicio);
         h.setHoraInicio(horaInicio);
         h.setHoraFin(horaFin);
-
+        h.setIdEstacionamiento(idEstacionamiento);
         String out = "";
         cH.insertarHorario(h, persona);
-        out = cH.listarHorarios(persona);
-
+        out = cH.listarHorarios(persona, idEstacionamiento);
+        
         return Response.status(Response.Status.OK).entity(out).build();
     }
-
+    
     @POST
     @Path("buscarHorario")
     @Produces(MediaType.APPLICATION_JSON)
@@ -126,9 +130,9 @@ public class RestHorario extends Application {
         Persona p = new Persona(idPersona, token);
         Horario h = new Horario();
         h.setDiaServicio(diaServicio);
-
+        
         String out = cH.buscarHorario(h, p);
         return Response.status(Response.Status.OK).entity(out).build();
     }
-
+    
 }

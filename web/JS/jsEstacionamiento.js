@@ -17,10 +17,6 @@ var isActive = true;
 var isInsert = true;
 
 
-
-// selecciona el <option> default
-// $('#sucursalReservacionListado option:eq(0)').prop('slected', true);
-
 /**
  * Cuando el DOM esté listo
  */
@@ -69,8 +65,6 @@ function cargarJSONElements() {
             return;
         }
 
-//        console.log("datos");
-//        console.log(data);
 
         // Asigna a varible local el JSON
         administradoresJSON = data;
@@ -169,7 +163,7 @@ function verDetalle(indice) {
     //$('#admin').selectmenu().selectmenu('refresh');
 
     $("#admin").attr("selected", false);
-    $("#admin option[value="+JSONSeleccionado.idAdministrador+"]").attr("selected", true).change();
+    $("#admin option[value=" + JSONSeleccionado.idAdministrador + "]").attr("selected", true).change();
 }
 
 $('#fullHeightModalRight').on('hidden.bs.modal', function (e) {
@@ -231,16 +225,18 @@ function listarEstacionamientos() {
                     "<td>" + item.administrador.persona.nombre + "</td>" +
                     "<td>" + item.longitud + "</td>" +
                     "<td>" + item.latitud + "</td>" +
-                    "<td><a onclick='verDetalle(" + i + ")' data-toggle='modal' data-target='#fullHeightModalRight' style='color: blue;'>Detalle</a></td>";
+                    "<td><button onclick='administrarHorarios(" + i + ")' class='btn btn-dark'>Administrar horarios</button></td>" +
+                    "<td><button onclick='verDetalle(" + i + ")' data-toggle='modal' data-target='#fullHeightModalRight' class='btn btn-primary'>Detalle</button></td>";
 
             if (active)
             {
-                html += "<td><a onclick='eliminar(" + i + ")' style='color: red;'>eliminar</a></td>" +
+                html += "<td><button onclick='eliminar(" + i + ")' class='btn btn-danger'>Eliminar</button></td>" +
                         "</tr>";
             } else {
-                html += "<td><a onclick='deseliminar(" + i + ")' style='color: green;'>activar</a></td>" +
+                html += "<td><button onclick='deseliminar(" + i + ")' class='btn btn-success'>Activar</button></td>" +
                         "</tr>";
             }
+
 
         });
 
@@ -289,10 +285,8 @@ function insertar() {
     objecto.estatus = 1;
     // asignación del administrador
     administradoresJSON.forEach(function (admin) {
-//        console.log("buscar: "+ adminIndex);
-//        console.log(admin);
-//        console.log(adminIndex);
-        if(admin.idAdministrador == adminIndex)
+
+        if (admin.idAdministrador == adminIndex)
             objecto.administrador = admin;
     });
 
@@ -344,7 +338,7 @@ function modificar() {
     console.log("admin index");
     console.log(adminIndex);
 
-    objecto._id = JSONSeleccionado._id;
+    objecto.idEstacionamiento = JSONSeleccionado.idEstacionamiento;
     objecto.nombre = nombre;
     objecto.latitud = latitud;
     objecto.longitud = longitud;
@@ -358,7 +352,7 @@ function modificar() {
 //        console.log("buscar: "+ adminIndex);
 //        console.log(admin);
 //        console.log(adminIndex);
-        if(admin.idAdministrador == adminIndex)
+        if (admin.idAdministrador == adminIndex)
             objecto.administrador = admin;
     });
 
@@ -447,4 +441,13 @@ function deseliminar(indice) {
     }).fail(function (data) {
         console.log("falló el AJAX");
     });
+}
+
+var estacionamientoA = new Object;
+
+function administrarHorarios(i) {
+    estacionamientoA = estacionamientosJSON[i];
+
+    localStorage.setItem("estacionamiento", JSON.stringify(estacionamientoA));
+    window.location = "inicioHorarios.html";
 }
