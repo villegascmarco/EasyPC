@@ -52,6 +52,7 @@ function listarHorarios() {
                 var dia = horarios[i].diaServicio;
                 var horaI = horarios[i].horaInicio;
                 var horaF = horarios[i].horaFin;
+                
                 datos += "<tr class='table-light'>";
                 datos += "<td>" + horarios[i].diaServicio + "</td>";
                 datos += "<td>" + horarios[i].horaInicio + "</td>";
@@ -77,6 +78,8 @@ function modificarDatos(idH, horarioS, horaI, horaF) {
     document.getElementById('txtDia').value = horarioS;
     document.getElementById('txtHoraInicio').value = horaI;
     document.getElementById('txtHoraFin').value = horaF;
+    document.getElementById('txtEstacionamiento').value = estacionamiento.nombre;
+    document.getElementById('txtDireccion').value = estacionamiento.domicilio;
 
 }
 

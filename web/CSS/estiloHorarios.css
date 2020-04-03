@@ -93,3 +93,7 @@ input:focus {
 #btnIngresar{
     margin-left: 80%;
 }
+
+thead, tr, th{
+    height: auto;
+}
