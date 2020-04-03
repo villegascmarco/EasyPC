@@ -99,6 +99,39 @@ function cargarJSONElements() {
     });
 }
 
+//Cerrar Sesion
+function cerrarSesion() {
+
+
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: "api/administrador/cerrarSesion",
+        data: {
+            administrador: JSON.stringify(usuario)
+        }
+    }).done(function (data) {
+        if (data != null) {
+            if (data.error != null) {
+                alert('Problemas');
+                return;
+            }
+
+            localStorage.removeItem('usuario');
+            window.location = "index.html";
+
+
+
+            return;
+
+        }
+        alert("No generado");
+
+        return;
+    });
+}
+
 function encodeImageFileAsURL(element) {
     var file = element.files[0];
     var reader = new FileReader();
