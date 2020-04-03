@@ -41,6 +41,8 @@ public class RestEstacionamiento
         ComandosEstacionamiento dao = new ComandosEstacionamiento();
         String out;
         Gson gson = new Gson();
+        
+        System.out.println(gson.fromJson(token, Administrador.class));
 
         /*
          * Autenticación usuario
@@ -49,10 +51,28 @@ public class RestEstacionamiento
         ControladorPersona controladorPersona = new ControladorPersona();
         boolean validado = controladorPersona.validarToken(gson.fromJson(token,
                 Administrador.class).getPersona());
+        System.out.println(validado);
         if (!validado)
             return Response.status(Response.Status.OK).entity(out).build();
 
         List<Estacionamiento> list = dao.getAll(Boolean.valueOf(active), "EasyPC");
+        out = gson.toJson(list);
+        // System.out.println(list.toString());
+        System.out.println(out);
+
+        return Response.status(Response.Status.OK).entity(out).build();
+    }
+    
+    @GET
+    @Path("user/getAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAll()
+    {
+        ComandosEstacionamiento dao = new ComandosEstacionamiento();
+        String out;
+        Gson gson = new Gson();
+
+        List<Estacionamiento> list = dao.getAll(true, "EasyPC");
         out = gson.toJson(list);
         // System.out.println(list.toString());
         System.out.println(out);
