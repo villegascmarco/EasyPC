@@ -7,7 +7,7 @@
 var usuario = new Object();
 
 var estacionamientosJSON;
-var administradoresJSON;
+var administradoresJSON = [];
 
 var JSONSeleccionado;
 
@@ -88,7 +88,7 @@ function cargarJSONElements() {
 //             console.log(item);
 
             // Construcción del HTML por <option>
-            html += "<option value='" + i.idAdministrador + "'>" + item.persona.nombre + "</option>";
+            html += "<option value='" + item.idAdministrador + "'>" + item.persona.nombre + "</option>";
 
             // Adición del HTML creado a <Section>
             $("#admin").append(html);
@@ -195,7 +195,7 @@ function listarEstacionamientos() {
                     "<th scope=\"row\">" + item.nombre + "</th>" +
                     "<td>" + item.domicilio + "</td>" +
                     "<td>" + item.capacidad + "</td>" +
-                    "<td>" + item.administrador.nombre + "</td>" +
+                    "<td>" + item.administrador.persona.nombre + "</td>" +
                     "<td>" + item.longitud + "</td>" +
                     "<td>" + item.latitud + "</td>" +
                     "<td><a onclick='verDetalle(" + i + ")' data-toggle='modal' data-target='#fullHeightModalRight' style='color: blue;'>Detalle</a></td>";
@@ -254,7 +254,14 @@ function insertar() {
     objecto.capacidad = capacidad;
     objecto.costo = costo;
     objecto.estatus = 1;
-    objecto.administrador = administradoresJSON[adminIndex];
+    // asignación del administrador
+    administradoresJSON.forEach(function (admin) {
+//        console.log("buscar: "+ adminIndex);
+//        console.log(admin);
+//        console.log(adminIndex);
+        if(admin.idAdministrador == adminIndex)
+            objecto.administrador = admin;
+    });
 
     // console.log(JSON.stringify(objecto));
     console.log(objecto);
@@ -313,7 +320,14 @@ function modificar() {
     objecto.capacidad = capacidad;
     objecto.costo = costo;
     objecto.estatus = JSONSeleccionado.estatus;
-    objecto.administrador = administradoresJSON[adminIndex];
+    // asignación del administrador
+    administradoresJSON.forEach(function (admin) {
+//        console.log("buscar: "+ adminIndex);
+//        console.log(admin);
+//        console.log(adminIndex);
+        if(admin.idAdministrador == adminIndex)
+            objecto.administrador = admin;
+    });
 
     console.log(objecto);
 //    console.log(JSON.stringify(objecto));
