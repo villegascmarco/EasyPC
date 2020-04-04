@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Registrarse - EasyPC</title>
+        <title>Registrar usuario - EasyPC</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -29,15 +29,15 @@ and open the template in the editor.
                 <p class="lead">Y podras acceder al sistema :)</p>
                 <form id="registrarUsuario" onsubmit="registrarUsuario();return false">
                     <label for="registrarNombre">Nombre:</label><br/>
-                    <input type="text" id="registrarNombre" name="nombreUsuario" class="form-control" placeholder="Ejemplo: Juan" required><br/>
+                    <input type="text" id="registrarNombre" name="nombreUsuario" class="form-control" placeholder="Ejemplo: Juan" required style="width: 100%"><br/>
                     <label for="registrarApellido">Apellido:</label><br/>
-                    <input type="text" id="registrarApellido" name="registrarApellido" class="form-control" placeholder="Ejemplo: Martínez" required><br/>
+                    <input type="text" id="registrarApellido" name="registrarApellido" class="form-control" placeholder="Ejemplo: Martínez" required style="width: 100%"><br/>
                     <label for="registrarCorreo">Correo</label><br/>
-                    <input type="text" id="registrarCorreo" name="registrarCorreo" class="form-control" placeholder="Ejemplo: example@gmail.com" required> <br/>
+                    <input type="text" id="registrarCorreo" name="registrarCorreo" class="form-control" placeholder="Ejemplo: example@gmail.com" required style="width: 100%"> <br/>
                     <label for="registrarContrasenia">Contraseña:</label><br/>
-                    <input type="password" id="registrarContrasenia" name="registrarContrasenia" class="form-control" required><br/>
+                    <input type="password" id="registrarContrasenia" name="registrarContrasenia" class="form-control" placeholder="Contraseña del usuario" required><br/>
                     <label for="registrarFotoURL">URL de un foto:<br/>(Es opcional, y sera usada como tu foto de usuario.)</label><br/>
-                    <input type="text" id="registrarFotoURL" name="registrarFotoURL" class="form-control" placeholder="Ejemplo: https://www.imagen.com.mx/assets/img/imagen_share.png"><br/>
+                    <input type="text" id="registrarFotoURL" name="registrarFotoURL" class="form-control" placeholder="Ejemplo: https://www.imagen.com.mx/assets/img/imagen_share.png" style="width: 100%"><br/>
                     <p style="text-align: center">
                         <button type="submit" class="btn btn-outline-info">¡Registrarme!</button>
                         <button type="reset" class="btn btn-outline-danger" onclick="window.location = 'ingresar_usuario.html'">Cancelar</button>
