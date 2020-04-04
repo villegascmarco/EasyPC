@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="col-6" id="detalleBtn">
                                     <p>
-                                        <button class="btn btn-dark" onclick="actualizarDatos()">Guardar</button>
+                                        <button class="btn btn-dark" onclick="actualizarDatos(); limpiarCampos()">Guardar</button>
                                         <button class="btn btn-light" onclick="limpiarCampos()">Cancelar</button>
                                     </p>
                                 </div>
@@ -92,12 +92,12 @@
                 <div class="row">    
                     <div class="col-sm-6" id="datosH">                    
                         <h5>Agregar un nuevo horario:</h5>
-                        <p><h5>Día de servicio:</h5> <input type="text" placeholder="Ejemplo: Lunes" id="txtDiaA">
+                        <p><h5>Día de servicio:</h5> <input type="text" placeholder="Ingrese un día de la semana" id="txtDiaA">
                         <p><h5>Hora de inicio:</h5> <input type="time" id="txtHoraInicioA">
                         <p><h5>Hora de cierre:</h5> <input type="time" id="txtHoraFinA">
 
                         <p id="btnsAgregar">
-                            <button class="btn btn-dark" onclick="agregarHorario()">Guardar</button>
+                            <button class="btn btn-dark" onclick="agregarHorario(); limpiarRegistro()">Guardar</button>
                             <button class="btn btn-light" onclick="limpiarRegistro()">Cancelar</button>
                         </p>
                     </div>

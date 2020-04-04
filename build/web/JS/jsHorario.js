@@ -85,7 +85,6 @@ function modificarDatos(idH, horarioS, horaI, horaF) {
 
 function actualizarDatos() {
 
-
     $.ajax({
         type: "POST",
         async: true,
@@ -105,38 +104,39 @@ function actualizarDatos() {
             window.alert('Problemas para eliminar');
             return;
         } else {
-            horarios = data;
-            var datos = "";
-            datos += "<thead class='infoTabla'>";
-            datos += "<tr>";
-            datos += "<th scope='col' style='width:auto;'> Día </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "</tr>";
-            datos += "</thead>";
-            datos += "<tbody>";
-
-            for (var i = 0; i < horarios.length; i++) {
-                var idH = horarios[i].idHorario;
-                var dia = horarios[i].diaServicio;
-                var horaI = horarios[i].horaInicio;
-                var horaF = horarios[i].horaFin;
-                datos += "<tr class='table-light'>";
-                datos += "<td>" + horarios[i].diaServicio + "</td>";
-                datos += "<td>" + horarios[i].horaInicio + "</td>";
-                datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-dark'\n\
-     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-danger'\n\
-     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
-                datos += "</tr>";
-            }
-            datos += "</tbody>";
-            $('#tblHorarios').html(datos);
+            listarHorarios();
+//            horarios = data;
+//            var datos = "";
+//            datos += "<thead class='infoTabla'>";
+//            datos += "<tr>";
+//            datos += "<th scope='col' style='width:auto;'> Día </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "</tr>";
+//            datos += "</thead>";
+//            datos += "<tbody>";
+//
+//            for (var i = 0; i < horarios.length; i++) {
+//                var idH = horarios[i].idHorario;
+//                var dia = horarios[i].diaServicio;
+//                var horaI = horarios[i].horaInicio;
+//                var horaF = horarios[i].horaFin;
+//                datos += "<tr class='table-light'>";
+//                datos += "<td>" + horarios[i].diaServicio + "</td>";
+//                datos += "<td>" + horarios[i].horaInicio + "</td>";
+//                datos += "<td>" + horarios[i].horaFin + "</td>";
+//                datos += "<td><button type='button' class='btn btn-dark'\n\
+//     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
+//                datos += "<td><button type='button' class='btn btn-danger'\n\
+//     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
+//                datos += "</tr>";
+//            }
+//            datos += "</tbody>";
+//            $('#tblHorarios').html(datos);
         }
     }
     );
@@ -162,38 +162,39 @@ function eliminarHorario(idHorario, diaServicio, horaI, horaF) {
             window.alert('Problemas para eliminar');
             return;
         } else {
-            horarios = data;
-            var datos = "";
-            datos += "<thead class='infoTabla'>";
-            datos += "<tr>";
-            datos += "<th scope='col' style='width:auto;'> Día </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "</tr>";
-            datos += "</thead>";
-            datos += "<tbody>";
-
-            for (var i = 0; i < horarios.length; i++) {
-                var idH = horarios[i].idHorario;
-                var dia = horarios[i].diaServicio;
-                var horaI = horarios[i].horaInicio;
-                var horaF = horarios[i].horaFin;
-                datos += "<tr class='table-light'>";
-                datos += "<td>" + horarios[i].diaServicio + "</td>";
-                datos += "<td>" + horarios[i].horaInicio + "</td>";
-                datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-dark'\n\
-     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-danger'\n\
-     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
-                datos += "</tr>";
-            }
-            datos += "</tbody>";
-            $('#tblHorarios').html(datos);
+            listarHorarios();
+//            horarios = data;
+//            var datos = "";
+//            datos += "<thead class='infoTabla'>";
+//            datos += "<tr>";
+//            datos += "<th scope='col' style='width:auto;'> Día </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "</tr>";
+//            datos += "</thead>";
+//            datos += "<tbody>";
+//
+//            for (var i = 0; i < horarios.length; i++) {
+//                var idH = horarios[i].idHorario;
+//                var dia = horarios[i].diaServicio;
+//                var horaI = horarios[i].horaInicio;
+//                var horaF = horarios[i].horaFin;
+//                datos += "<tr class='table-light'>";
+//                datos += "<td>" + horarios[i].diaServicio + "</td>";
+//                datos += "<td>" + horarios[i].horaInicio + "</td>";
+//                datos += "<td>" + horarios[i].horaFin + "</td>";
+//                datos += "<td><button type='button' class='btn btn-dark'\n\
+//     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
+//                datos += "<td><button type='button' class='btn btn-danger'\n\
+//     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
+//                datos += "</tr>";
+//            }
+//            datos += "</tbody>";
+//            $('#tblHorarios').html(datos);
         }
     }
     );
@@ -204,6 +205,8 @@ function limpiarCampos() {
     document.getElementById('txtDia').value = "";
     document.getElementById('txtHoraInicio').value = "";
     document.getElementById('txtHoraFin').value = "";
+    document.getElementById('txtEstacionamiento').value = "";
+    document.getElementById('txtDireccion').value = "";
 }
 
 function agregarHorario() {
@@ -226,39 +229,40 @@ function agregarHorario() {
             window.alert('Problemas para eliminar');
             return;
         } else {
-            horarios = data;
-            var datos = "";
-            var datos = "";
-            datos += "<thead class='infoTabla'>";
-            datos += "<tr>";
-            datos += "<th scope='col' style='width:auto;'> Día </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
-            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "<th scope='col' style='width:auto;'> </th>";
-            datos += "</tr>";
-            datos += "</thead>";
-            datos += "<tbody>";
-
-            for (var i = 0; i < horarios.length; i++) {
-                var idH = horarios[i].idHorario;
-                var dia = horarios[i].diaServicio;
-                var horaI = horarios[i].horaInicio;
-                var horaF = horarios[i].horaFin;
-                datos += "<tr class='table-light'>";
-                datos += "<td>" + horarios[i].diaServicio + "</td>";
-                datos += "<td>" + horarios[i].horaInicio + "</td>";
-                datos += "<td>" + horarios[i].horaFin + "</td>";
-                datos += "<td><button type='button' class='btn btn-dark'\n\
-     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
-                datos += "<td><button type='button' class='btn btn-danger'\n\
-     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
-                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
-                datos += "</tr>";
-            }
-            datos += "</tbody>";
-            $('#tblHorarios').html(datos);
+            listarHorarios();
+//            horarios = data;
+//            var datos = "";
+//            var datos = "";
+//            datos += "<thead class='infoTabla'>";
+//            datos += "<tr>";
+//            datos += "<th scope='col' style='width:auto;'> Día </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Inicio </th>";
+//            datos += "<th scope='col' style='width:auto;'> Hora Fin </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "<th scope='col' style='width:auto;'> </th>";
+//            datos += "</tr>";
+//            datos += "</thead>";
+//            datos += "<tbody>";
+//
+//            for (var i = 0; i < horarios.length; i++) {
+//                var idH = horarios[i].idHorario;
+//                var dia = horarios[i].diaServicio;
+//                var horaI = horarios[i].horaInicio;
+//                var horaF = horarios[i].horaFin;
+//                datos += "<tr class='table-light'>";
+//                datos += "<td>" + horarios[i].diaServicio + "</td>";
+//                datos += "<td>" + horarios[i].horaInicio + "</td>";
+//                datos += "<td>" + horarios[i].horaFin + "</td>";
+//                datos += "<td><button type='button' class='btn btn-dark'\n\
+//     id='insertarProducto' onclick='modificarDatos(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Modificar</button></td>";
+//                datos += "<td><button type='button' class='btn btn-danger'\n\
+//     id='eliminarProducto' onclick='eliminarHorario(" + idH + ",\"" + dia + "\", \"" +
+//                        horaI + "\", \"" + horaF + "\")'>Eliminar</button></td>";
+//                datos += "</tr>";
+//            }
+//            datos += "</tbody>";
+//            $('#tblHorarios').html(datos);
         }
     }
     );
