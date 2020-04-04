@@ -271,6 +271,7 @@ function buscarHorario() {
         async: true,
         url: 'api/horarios/buscarHorario',
         data: {
+            idEstacionamiento: idEstacionamiento,
             diaServicio: diaS,
             idPersona: idPersona,
             token: token

@@ -11,9 +11,12 @@
         <group>
             <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/CSS/estiloHorarios.css</file>
             <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/JS/jsEstacionamiento.js</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/comandos/ComandosHorario.java</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/rest/RestHorario.java</file>
             <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/JS/jsHorario.js</file>
             <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/estacionamiento.html</file>
             <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/inicioHorarios.html</file>
+            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/controlador/ControladorHorario.java</file>
         </group>
     </open-files>
 </project-private>

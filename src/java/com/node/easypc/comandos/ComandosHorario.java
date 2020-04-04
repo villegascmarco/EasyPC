@@ -112,6 +112,7 @@ private BaseDatos baseDatos = new BaseDatos();
         DBCollection dBCollection = baseDatos.obtenerColeccion(Commons.COLECCION_HORARIO);
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("diaServicio", h.getDiaServicio());
+        whereQuery.put("idEstacionamiento", h.getIdEstacionamiento());
         whereQuery.put("estatus", 1);
         BasicDBObject fields = new BasicDBObject();
         fields.put("_id", 0);
