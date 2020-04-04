@@ -142,6 +142,15 @@ function verDetalle(indice) {
 $('#fullHeightModalRight').on('hidden.bs.modal', function (e) {
     // por defecto es insertar
     isInsert = true;
+    
+    $('#nombre').val("");
+    $('#latitud').val("");
+    $('#longitud').val("");
+    $('#domicilio').val("");
+    $('#capacidad').val("");
+    $('#costo').val("");
+    $("#admin").attr("selected", false);
+    $("#admin option[value=0]").attr("selected", true).change();
 
     // cambia la imagen a nula
     imageBase64 = null;
