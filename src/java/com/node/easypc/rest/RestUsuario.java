@@ -1,9 +1,7 @@
 package com.node.easypc.rest;
 
 import com.node.easypc.controlador.ControladorUsuario;
-import com.node.easypc.modelo.Persona;
 import com.node.easypc.modelo.Usuario;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -36,6 +34,28 @@ public class RestUsuario extends Application {
 //            System.out.println("Correo y contra: " + aux.getPersona().getCorreo() + " "
 //                    + aux.getPersona().getContrasenia());
             json = cu.iniciarSesion(aux);
+        } catch (Exception e) {
+            e.printStackTrace();
+            json = null;
+        } finally {
+            if (json == null) {
+                return Response.status(Response.Status.NO_CONTENT).entity(json).build();
+            }
+        }
+        return Response.status(Response.Status.OK).entity(json).build();
+    }
+
+    @POST
+    @Path("ingresarGoogle")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response ingresarGoogle(@FormParam("usuario") String usuario) {
+        cu = new ControladorUsuario();
+
+        try {
+
+            Usuario aux = new Usuario(usuario);
+
+            json = cu.iniciarSesionGoogle(aux);
         } catch (Exception e) {
             e.printStackTrace();
             json = null;
