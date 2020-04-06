@@ -111,22 +111,22 @@ and open the template in the editor.
 
                                 <div class="md-form">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" class="form-control">
+                                    <input type="text" id="nombre" name="nombre" class="form-control" required>
                                 </div>
 
                                 <div class="md-form">
                                     <label for="latitud">latitud</label>
-                                    <input type="number" id="latitud" name="latitud" class="form-control">
+                                    <input type="number" id="latitud" name="latitud" class="form-control" step="0.01" required>
                                 </div>
 
                                 <div class="md-form">
                                     <label for="longitud">longitud</label>
-                                    <input type="number" id="longitud" name="longitud" class="form-control">
+                                    <input type="number" id="longitud" name="longitud" class="form-control" step="0.01" required>
                                 </div>
 
                                 <div class="md-form mb-3">
                                     <label for="domicilio">Domicilio</label>
-                                    <input type="text" id="domicilio" name="domicilio" class="form-control">
+                                    <input type="text" id="domicilio" name="domicilio" class="form-control" required>
                                 </div>
 
                                 <img src="https://mdbootstrap.com/img/Others/documentation/img%20(75)-mini.jpg" alt="thumbnail" class="img-thumbnail"
@@ -139,19 +139,19 @@ and open the template in the editor.
 
                                 <div class="md-form mt-2">
                                     <label for="capacidad">Capacidad</label>
-                                    <input type="number" id="capacidad" name="capacidad" class="form-control">
+                                    <input type="number" id="capacidad" name="capacidad" class="form-control" required>
                                 </div>
 
                                 <div class="md-form">
                                     <label for="costo">Costo</label>
-                                    <input type="number" id="costo" name="costo" class="form-control">
+                                    <input type="number" id="costo" name="costo" class="form-control" step="0.01" required>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label class="mdb-main-label">Administrador</label>
                                         <br>
-                                        <select id="admin" name="admin" class="mdb-select colorful-select dropdown-primary md-form">
+                                        <select id="admin" name="admin" class="mdb-select colorful-select dropdown-primary md-form" required>
                                             <option value="none" disabled selected>-- Escoger --</option>
                                         </select>
                                     </div>
