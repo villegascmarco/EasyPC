@@ -9,12 +9,9 @@
             <file>file:/C:/Users/logic/Documents/UTL/5to%20cuatrimestre/Materias/Integradora/Proyecto/EasyPC/web/usuario.html</file>
         </group>
         <group>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/CSS/estiloHorarios.css</file>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/comandos/ComandosHorario.java</file>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/rest/RestHorario.java</file>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/JS/jsHorario.js</file>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/web/inicioHorarios.html</file>
-            <file>file:/C:/Users/pollo/Desktop/EasyPC/EasyPC/src/java/com/node/easypc/controlador/ControladorHorario.java</file>
+            <file>file:/home/marco/NetBeansProjects/EasyPC/src/java/com/node/easypc/comandos/ComandosEstacionamiento.java</file>
+            <file>file:/home/marco/NetBeansProjects/EasyPC/src/java/com/node/easypc/rest/RestEstacionamiento.java</file>
+            <file>file:/home/marco/NetBeansProjects/EasyPC/web/estacionamiento.html</file>
         </group>
     </open-files>
 </project-private>

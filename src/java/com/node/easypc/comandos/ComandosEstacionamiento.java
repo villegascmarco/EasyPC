@@ -12,6 +12,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import com.node.easypc.modelo.Administrador;
 import com.node.easypc.modelo.Estacionamiento;
@@ -46,6 +47,39 @@ public class ComandosEstacionamiento
 
     }
 
+    public List<Estacionamiento> getAll(boolean isActive,
+                                        String db,
+                                        String id)
+    {
+        Gson gson = new Gson();
+
+        MongoClient mongoClient = MongoClients.create(settings);
+
+        MongoDatabase database = mongoClient.getDatabase(db);
+        MongoCollection<Estacionamiento> collection = database.getCollection(
+                "estacionamiento", Estacionamiento.class);
+
+        // FindIterable<Estacionamiento> find = collection.find();
+        List<Estacionamiento> estacionamientos = new ArrayList<Estacionamiento>();
+
+        FindIterable<Estacionamiento> iterable;
+
+        if (isActive)
+            iterable = collection.find(and(
+                    eq("estatus", 1), 
+                    eq("administrador.idAdministrador", id)));
+        else
+            iterable = collection.find(and(
+                    eq("estatus", 0), 
+                    eq("administrador.idAdministrador", id)));
+
+        for (Estacionamiento estacionamiento : iterable)
+            // Estacionamiento e = gson.fromJson(doc.toJson(), Estacionamiento.class);
+            estacionamientos.add(estacionamiento);
+
+        return estacionamientos;
+    }
+    
     public List<Estacionamiento> getAll(boolean isActive,
                                         String db)
     {
