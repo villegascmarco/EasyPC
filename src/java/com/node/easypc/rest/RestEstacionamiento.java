@@ -45,15 +45,15 @@ public class RestEstacionamiento {
          * Autenticación usuario
          */
         out = "{\"error\":\"autenticación\"}";
+        Administrador admin = gson.fromJson(token, Administrador.class);
         ControladorPersona controladorPersona = new ControladorPersona();
-        boolean validado = controladorPersona.validarToken(gson.fromJson(token,
-                Administrador.class).getPersona());
+        boolean validado = controladorPersona.validarToken(admin.getPersona());
         System.out.println(validado);
         if (!validado) {
             return Response.status(Response.Status.OK).entity(out).build();
         }
 
-        List<Estacionamiento> list = dao.getAll(Boolean.valueOf(active), "EasyPC");
+        List<Estacionamiento> list = dao.getAll(Boolean.valueOf(active), "EasyPC", admin.getIdAdministrador());
         out = gson.toJson(list);
         System.out.println(list.toString());
         System.out.println("OUTSIS" + out);

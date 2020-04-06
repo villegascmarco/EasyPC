@@ -22,7 +22,7 @@ import javax.ws.rs.FormParam;
 
 @Path("horarios")
 public class RestHorario extends Application {
-    
+
     @POST
     @Path("listado")
     @Produces(MediaType.APPLICATION_JSON)
@@ -31,13 +31,13 @@ public class RestHorario extends Application {
             @FormParam("token") @DefaultValue("") String token) {
         ControladorHorario cH = new ControladorHorario();
         Persona persona = new Persona(idPersona, token);
-        
+
         String res = cH.listarHorarios(persona, idEstacionamiento);
         String out = new Gson().toJson(res);
         System.out.println(res);
         return Response.status(Response.Status.OK).entity(res).build();
     }
-    
+
     @POST
     @Path("actualizarHorario")
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,22 +48,22 @@ public class RestHorario extends Application {
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-        
+
         ControladorHorario cH = new ControladorHorario();
         Horario h = new Horario();
         Persona p = new Persona(idPersona, token);
-        
+
         h.setIdHorario(idHorario);
         h.setDiaServicio(diaServicio);
         h.setHoraInicio(horaInicio);
         h.setHoraFin(horaFin);
         String res = "";
-        
+
         cH.actualizarHorario(h, p);
         res = cH.listarHorarios(p, idEstacionamiento);
         return Response.status(Response.Status.OK).entity(res).build();
     }
-    
+
     @POST
     @Path("eliminarHorario")
     @Produces(MediaType.APPLICATION_JSON)
@@ -74,24 +74,24 @@ public class RestHorario extends Application {
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-        
+
         ControladorHorario cH = new ControladorHorario();
-        
+
         Horario h = new Horario();
         Persona persona = new Persona(idPersona, token);
-        
+
         h.setIdHorario(idHorario);
         h.setDiaServicio(diaServicio);
         h.setHoraInicio(horaInicio);
         h.setHoraFin(horaFin);
         String res = "";
-        
+
         cH.eliminarHorario(h, persona);
         res = cH.listarHorarios(persona, idEstacionamiento);
-        
+
         return Response.status(Response.Status.OK).entity(res).build();
     }
-    
+
     @POST
     @Path("insertarHorario")
     @Produces(MediaType.APPLICATION_JSON)
@@ -101,12 +101,12 @@ public class RestHorario extends Application {
             @FormParam("horaFin") @DefaultValue("") String horaFin,
             @FormParam("token") @DefaultValue("") String token,
             @FormParam("idPersona") @DefaultValue("") String idPersona) {
-        
+
         ControladorHorario cH = new ControladorHorario();
-        
+
         Horario h = new Horario();
         Persona persona = new Persona(idPersona, token);
-        
+
         String idH = new Timestamp(System.currentTimeMillis()).getTime() + "";
         h.setIdHorario(idH);
         h.setDiaServicio(diaServicio);
@@ -116,23 +116,25 @@ public class RestHorario extends Application {
         String out = "";
         cH.insertarHorario(h, persona);
         out = cH.listarHorarios(persona, idEstacionamiento);
-        
+
         return Response.status(Response.Status.OK).entity(out).build();
     }
-    
+
     @POST
     @Path("buscarHorario")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscar(@FormParam("diaServicio") @DefaultValue("") String diaServicio,
+    public Response buscar(@FormParam("idEstacionamiento") @DefaultValue("") String idEstacionamiento,
+            @FormParam("diaServicio") @DefaultValue("") String diaServicio,
             @FormParam("idPersona") @DefaultValue("") String idPersona,
             @FormParam("token") @DefaultValue("") String token) {
         ControladorHorario cH = new ControladorHorario();
         Persona p = new Persona(idPersona, token);
         Horario h = new Horario();
+        h.setIdEstacionamiento(idEstacionamiento);
         h.setDiaServicio(diaServicio);
-        
+
         String out = cH.buscarHorario(h, p);
         return Response.status(Response.Status.OK).entity(out).build();
     }
-    
+
 }

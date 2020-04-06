@@ -8,6 +8,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.node.easypc.baseDatos.BaseDatos;
 import com.node.easypc.commons.Commons;
+import com.node.easypc.modelo.Persona;
 import com.node.easypc.modelo.Usuario;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
@@ -20,6 +21,28 @@ import org.bson.Document;
 public class ComandosUsuario {
 
     private BaseDatos baseDatos = new BaseDatos();
+    
+       public String iniciarSesionGoogle(Usuario usuario) {
+        String respuesta = null;
+
+        DBCollection dBCollection = baseDatos.obtenerColeccion(Commons.COLECCION_USUARIO);
+
+        //persona.parametro porque estamos buscando desde otra coleccion diferente
+        //de persona
+        DBObject query = BasicDBObjectBuilder.start()
+                .add("persona.correo", usuario.getPersona().getCorreo())
+                .add("persona.estatus", 1)
+                .get();
+
+        DBCursor dBCursor = dBCollection.find(query);
+
+        if (dBCursor.hasNext()) {
+            respuesta = dBCursor.next().toString();
+        }
+
+        baseDatos.cerrarConexion();
+        return respuesta;
+    }
 
     public boolean crearUsuario(Usuario usuario) {
         boolean respuesta = true;
