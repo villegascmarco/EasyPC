@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
  */
 public class Estacionamiento
 {
-    private ObjectId _id;
+    private String idEstacionamiento;
     private int estatus;
     private double latitud;
     private double longitud;
@@ -29,14 +29,14 @@ public class Estacionamiento
     {
     }
 
-    public ObjectId getId()
+    public String getId()
     {
-        return _id;
+        return idEstacionamiento;
     }
 
-    public void setId(ObjectId _id)
+    public void setId(String idEstacionamiento)
     {
-        this._id = _id;
+        this.idEstacionamiento = idEstacionamiento;
     }
 
     public int getEstatus()
@@ -134,7 +134,7 @@ public class Estacionamiento
     @Override
     public String toString()
     {
-        return "Estacionamiento{" + "_id=" + _id + ", estatus=" + estatus + ", latitud=" + latitud + ", longitud=" + longitud + ", nombre=" + nombre + ", foto=" + foto + ", domicilio=" + domicilio + ", capacidad=" + capacidad + ", costo=" + costo + ", administrador=" + administrador + '}';
+        return "Estacionamiento{" + "idEstacionamiento=" + idEstacionamiento + ", estatus=" + estatus + ", latitud=" + latitud + ", longitud=" + longitud + ", nombre=" + nombre + ", foto=" + foto + ", domicilio=" + domicilio + ", capacidad=" + capacidad + ", costo=" + costo + ", administrador=" + administrador + '}';
     }
     
     

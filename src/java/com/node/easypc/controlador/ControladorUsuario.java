@@ -1,10 +1,27 @@
 package com.node.easypc.controlador;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+
 import com.google.gson.Gson;
 import com.node.easypc.comandos.ComandosUsuario;
 import com.node.easypc.commons.Commons;
+import com.node.easypc.modelo.IdTokenVerifiedParser;
 import com.node.easypc.modelo.Usuario;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.security.GeneralSecurityException;
 import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,6 +49,67 @@ public class ControladorUsuario {
             return null;
         }
 
+    }
+
+    public String iniciarSesionGoogle(Usuario usuario) {
+
+        usuario = validarIdToken(usuario.getIdToken());
+
+        if (usuario.getPersona().getCorreo() == null) {
+            return null;
+        }
+
+        String respuesta = comandosUsuario.iniciarSesionGoogle(usuario);
+
+        if (respuesta != null) {
+            Usuario aux = new Usuario(respuesta);
+
+            if (aux.getIdUsuario() != null) {
+                aux.getPersona().setToken();
+                modificarUsuario(aux, true);
+            }
+            return aux.toString();
+
+        } else {
+            return registrarUsuario(usuario);
+
+        }
+
+    }
+
+    public Usuario validarIdToken(String idTokenString) {
+        // Esto es lo que vamos a devolver
+        StringBuilder resultado = new StringBuilder();
+
+        // Creando un objeto URL
+        URL url;
+        try {
+            url = new URL("https://oauth2.googleapis.com/tokeninfo?id_token=" + idTokenString);
+
+            // Abrir la conexión e indicar que será de tipo GET
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            conexion.setRequestMethod("GET");
+            // Búferes para leer
+            BufferedReader rd = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+            String linea;
+            // Mientras el BufferedReader se pueda leer, agregar contenido a resultado
+            while ((linea = rd.readLine()) != null) {
+                resultado.append(linea);
+            }
+            // Cerrar el BufferedReader
+            rd.close();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ProtocolException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Gson gson = new Gson();
+        IdTokenVerifiedParser idTokenVerifiedParser = gson.fromJson(resultado.toString(), IdTokenVerifiedParser.class);
+
+        return idTokenVerifiedParser.convertirAUsuario();
     }
 
     /**

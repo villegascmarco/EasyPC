@@ -16,16 +16,18 @@ public class Horario {
     private String horaInicio;
     private String horaFin;
     private int estatus;
+    private String idEstacionamiento;
 
     public Horario() {
     }
 
-    public Horario(String idHorario, String diaServicio, String horaInicio, String horaFin, int estatus) {
+    public Horario(String idHorario, String diaServicio, String horaInicio, String horaFin, int estatus, String idEstacionamiento) {
         this.idHorario = idHorario;
         this.diaServicio = diaServicio;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.estatus = estatus;
+        this.idEstacionamiento = idEstacionamiento;
     }
 
     public String getIdHorario() {
@@ -68,4 +70,13 @@ public class Horario {
         this.estatus = estatus;
     }
 
+    public String getIdEstacionamiento() {
+        return idEstacionamiento;
+    }
+
+    public void setIdEstacionamiento(String idEstacionamiento) {
+        this.idEstacionamiento = idEstacionamiento;
+    }
+
+    
 }

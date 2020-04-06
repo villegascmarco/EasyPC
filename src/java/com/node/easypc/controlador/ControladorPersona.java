@@ -6,7 +6,9 @@
 package com.node.easypc.controlador;
 
 import com.node.easypc.comandos.ComandosPersona;
+import com.node.easypc.commons.Commons;
 import com.node.easypc.modelo.Persona;
+import com.node.easypc.modelo.Usuario;
 
 /**
  *
@@ -58,9 +60,9 @@ public class ControladorPersona {
 
     /**
      * Validamos que el correo sea unico en el sistema
-     * 
+     *
      * @param persona
-     * @return 
+     * @return
      */
     public boolean validarAutenticidadCorreo(Persona persona) {
 

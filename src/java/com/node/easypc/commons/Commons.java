@@ -23,6 +23,7 @@ public class Commons {
     public static final String COLECCION_PERSONA = "persona";
     public static final String COLECCION_USUARIO = "usuario";
     public static final String COLECCION_HORARIO = "horario";
+    public static final String CLIENT_ID = "1086582160298-9atg6hb6ku0phovi49o239d8etj8770r.apps.googleusercontent.com";
 
     /**
      * Ejemplo de un admin

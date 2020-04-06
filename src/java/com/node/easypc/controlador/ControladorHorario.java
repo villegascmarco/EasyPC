@@ -18,10 +18,10 @@ public class ControladorHorario {
     ComandosHorario cH = new ComandosHorario();
     ControladorPersona cP = new ControladorPersona();
     
-    public String listarHorarios(Persona persona) {
+    public String listarHorarios(Persona persona, String idE) {
         String response = "";
         if (cP.validarToken(persona)) {
-            response = cH.listarHorarios();
+            response = cH.listarHorarios(idE);
             return response;
         }
         return response;

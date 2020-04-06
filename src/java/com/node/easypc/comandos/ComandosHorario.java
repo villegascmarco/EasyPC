@@ -22,13 +22,14 @@ import java.util.List;
 public class ComandosHorario {
 private BaseDatos baseDatos = new BaseDatos();
 
-    public String listarHorarios() {
+    public String listarHorarios(String idE) {
         
         DBCollection dBCollection = baseDatos.obtenerColeccion(Commons.COLECCION_HORARIO);
         baseDatos.obtenerColeccion(Commons.COLECCION_HORARIO);
                 
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("estatus", 1);
+        whereQuery.put("idEstacionamiento", idE);
         BasicDBObject fields = new BasicDBObject();
         fields.put("_id", 0);
 
@@ -102,6 +103,7 @@ private BaseDatos baseDatos = new BaseDatos();
         document.put("horaInicio", h.getHoraInicio());
         document.put("horaFin", h.getHoraFin());
         document.put("estatus", 1);
+        document.put("idEstacionamiento", h.getIdEstacionamiento());
         dBCollection.insert(document);
         return "Insertado!";
     }
