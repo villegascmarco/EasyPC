@@ -97,3 +97,7 @@ input:focus {
 thead, tr, th{
     height: auto;
 }
+
+#txtHoraInicio, #txtHoraFin{
+    width: 95%;
+}
